@@ -1,9 +1,7 @@
 #include "game.h"
 
+#include <core/kmemory.h>
 #include <entry.h>
-
-// TODO: remove
-#include <platform/platform.h>
 
 // Defines how to create a game
 b8 create_game(game* out_game) {
@@ -19,7 +17,7 @@ b8 create_game(game* out_game) {
     out_game->on_resize = game_on_resize;
 
     // Create game state
-    out_game->state = platform_allocate(sizeof(game_state), FALSE);
+    out_game->state = kallocate(sizeof(game_state), MEMORY_TAG_GAME);
 
     return TRUE;
 }
